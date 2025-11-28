@@ -157,3 +157,24 @@ document.addEventListener('DOMContentLoaded', function() {
     loadTheme();
     renderTasks();
 });
+
+// Search functionality
+function searchTasks() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const taskItems = document.querySelectorAll('.task-item');
+
+    taskItems.forEach(item => {
+        const taskText = item.querySelector('span').textContent.toLowerCase();
+        if (taskText.includes(searchTerm)) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+function clearSearch() {
+    document.getElementById('searchInput').value = '';
+    searchTasks();
+}
+
